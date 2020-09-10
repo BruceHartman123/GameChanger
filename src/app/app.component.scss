@@ -1,0 +1,60 @@
+.content {
+  background-color: #180f0f;
+  color: white;
+  padding: 0.25rem 1rem;
+  height: calc(100vh - 1.5rem);
+  overflow-y: auto;
+  .title {
+    text-align: center;
+    color: #c29b9b;
+  }
+  .stat-panel {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .center-btn {
+    display:grid;
+    justify-items: center;
+    margin-bottom: 40px;
+    & button {
+      width: 100px;
+    }
+  }
+  .char-btns {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 40px;
+    & button {
+      width: 120px;
+    }
+    & .load-btn {
+      justify-self: end;
+    }
+  }
+  .stat-row {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 200px 100px 100px;
+  }
+  .upd-row {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 200px 100px;
+  }
+  .skill-row {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 120px 120px 100px;
+  }
+  .name-input {
+    margin-right: 10px;
+    padding: 2px 5px;
+  }
+  .light-btn {
+    background-color: #b1c0c9;
+  }
+  .name-title {
+    margin-right: 30px;
+  }
+}

@@ -1,0 +1,109 @@
+<div class="content">
+  <h1 class="title">Blood And Bone</h1>
+  <div *ngIf="showLoad">
+    <div class="center-btn">
+      <button class="light-btn" (click)="showLoad = false">&lt;--Back</button>
+    </div>
+    <div *ngIf="getStorageLength() === 0">
+      No Saved Characters.
+    </div>
+    <div *ngIf="getStorageLength() > 0">
+      <div *ngFor="let name of getStorageKeys()" class="stat-row">
+        <span>{{name}}</span>
+        <button class="light-btn" (click)="loadChar(name)">Load</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!showLoad">
+    <div class="char-btns">
+      <button class="light-btn load-btn" (click)="showLoad = true">Load Character</button>
+      <button class="light-btn" (click)="saveChar()">Save Character</button>
+    </div>
+    <div class="stat-row" *ngIf="!nameEdit">
+      <span class="name-title">Name:</span>
+      <span>{{name}}</span>
+      <button class="light-btn" (click)="nameEdit = true">Update</button>
+    </div>
+    <div class="upd-row" *ngIf="nameEdit">
+      <input class="name-input" type="text" [(ngModel)]="tempName" placeholder="Enter Name">
+      <button class="light-btn" (click)="updateName()">Save</button>
+    </div>
+    <div class="stat-panel">
+      <div>
+        <div class="stat-row" *ngIf="!strEdit">
+          <span class="name-title">Strength:</span>
+          <span>{{strength}}</span>
+          <button class="light-btn" (click)="strEdit = true">Update</button>
+        </div>
+        <div class="upd-row" *ngIf="strEdit">
+          <input class="name-input" type="number" [(ngModel)]="tempStrength" placeholder="Enter Strength">
+          <button class="light-btn" (click)="updateStrength()">Save</button>
+        </div>
+        <div class="stat-row" *ngIf="!dexEdit">
+          <span class="name-title">Dexterity:</span>
+          <span>{{dex}}</span>
+          <button class="light-btn" (click)="dexEdit = true">Update</button>
+        </div>
+        <div class="upd-row" *ngIf="dexEdit">
+          <input class="name-input" type="number" [(ngModel)]="tempDex" placeholder="Enter Dexterity">
+          <button class="light-btn" (click)="updateDex()">Save</button>
+        </div>
+        <div class="stat-row" *ngIf="!mindEdit">
+          <span class="name-title">Mind:</span>
+          <span>{{mind}}</span>
+          <button class="light-btn" (click)="mindEdit = true">Update</button>
+        </div>
+        <div class="upd-row" *ngIf="mindEdit">
+          <input class="name-input" type="number" [(ngModel)]="tempMind" placeholder="Enter Mind Level">
+          <button class="light-btn" (click)="updateMind()">Save</button>
+        </div>
+        <div class="stat-row" *ngIf="!presEdit">
+          <span class="name-title">Presence:</span>
+          <span>{{presence}}</span>
+          <button class="light-btn" (click)="presEdit = true">Update</button>
+        </div>
+        <div class="upd-row" *ngIf="presEdit">
+          <input class="name-input" type="number" [(ngModel)]="tempPresence" placeholder="Enter Presence">
+          <button class="light-btn" (click)="updatePresence()">Save</button>
+        </div>
+        <div class="stat-row">
+          <span class="name-title">Vitality:</span>
+          <span>{{vitality}}</span>
+        </div>
+        <div class="stat-row">
+          <span class="name-title"># Times Damaged:</span>
+          <span>{{numDamaged}}</span>
+          <button *ngIf="vitality > 0" class="light-btn" (click)="takeDamage()">Take Damage</button>
+        </div>
+        <div class="stat-row">
+          <span class="name-title">Evasion:</span>
+          <span>{{evasion}}</span>
+        </div>
+        <div class="stat-row">
+          <span class="name-title">Armor:</span>
+          <span>{{armor}}</span>
+        </div>
+        <div class="stat-row">
+          <span class="name-title">Alacrity:</span>
+          <span>{{alacrity}}</span>
+        </div>
+        <div class="stat-row">
+          <span class="name-title">Tenacity:</span>
+          <span>{{tenacity}}</span>
+          <button class="light-btn" (click)="tenacity = tenacity + 1">Receive</button>
+        </div>
+        <div class="stat-row">
+          <span class="name-title">Power:</span>
+          <span>{{power}}</span>
+        </div>
+      </div>
+      <div>
+        <div *ngFor="let skill of skills; index as i" class="skill-row">
+          <span>{{skill}}</span>
+          <span>{{skillNames[skillLevel[i]]}}</span>
+          <button *ngIf="checkIfTrainable(i)" class="light-btn" (click)="train(i)">Train</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
